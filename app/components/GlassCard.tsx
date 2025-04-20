@@ -34,3 +34,5 @@ const styles = StyleSheet.create({
     padding: 12,
   },
 });
+
+export default GlassCard;

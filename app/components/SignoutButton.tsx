@@ -40,3 +40,5 @@ const styles = StyleSheet.create({
     color: '#FF3B30',
   }
 })
+
+export default SignOutButton;

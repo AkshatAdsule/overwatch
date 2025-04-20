@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     left: -250,
     width: 500,
     height: 500,
-    opacity: 0.25
+    opacity: 0.15,
   },
   title: {
     fontWeight: 'bold',

@@ -21,3 +21,5 @@ export const GradientBackground: React.FC<{ children?: React.ReactNode }> = ({ c
     </View>
   );
 };
+
+export default GradientBackground;
