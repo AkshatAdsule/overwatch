@@ -16,11 +16,11 @@ export default function TrackingScreen() {
   const router = useRouter();
   
   useEffect(() => {
-    const loadingTime = Math.floor(Math.random() * 12000) + 3000;
+    const loadingTime = Math.floor(Math.random() * 120) + 3000;
     
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-      const randomCountdown = Math.floor(Math.random() * 25) + 5;
+      const randomCountdown = Math.floor(Math.random() * 5) + 5;
       setCountdown(randomCountdown);
       
       const countdownInterval = setInterval(() => {
@@ -39,6 +39,12 @@ export default function TrackingScreen() {
     
     return () => clearTimeout(loadingTimer);
   }, []);
+  
+  useEffect(() => {
+    if (countdown === 0) {
+      router.replace('/radar');
+    }
+  }, [countdown]);
   
   return (
     <SafeAreaView style={styles.safeArea}>
