@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
   ScrollView,
   Switch,
-  Linking,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { SignOutButton } from "../components/SignoutButton";
 import { useUser, useAuth } from "@clerk/clerk-expo";
+import { GlassCard } from "../components/GlassCard";
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -30,7 +30,6 @@ export default function SettingsScreen() {
   const lastName = user?.lastName || "";
   const fullName = `${firstName} ${lastName}`.trim();
   const email = user?.emailAddresses[0]?.emailAddress || "No email found";
-  const imageUrl = user?.imageUrl;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -39,14 +38,14 @@ export default function SettingsScreen() {
           style={styles.backButton}
           onPress={() => router.back()}
         >
-          <Ionicons name="chevron-back" size={24} color="#000" />
+          <Ionicons name="chevron-back" size={24} color="#E8F1F2" />
           <Text style={styles.backText}>Back</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Account Settings</Text>
       </View>
 
       <ScrollView style={styles.scrollView}>
-        <View style={styles.section}>
+        <GlassCard style={styles.section}>
           <Text style={styles.sectionTitle}>Account</Text>
           <View style={styles.settingItem}>
             <Text style={styles.settingLabel}>Name</Text>
@@ -56,16 +55,16 @@ export default function SettingsScreen() {
             <Text style={styles.settingLabel}>Email</Text>
             <Text style={styles.settingValue}>{email}</Text>
           </View>
-        </View>
+        </GlassCard>
 
-        <View style={styles.section}>
+        <GlassCard style={styles.section}>
           <Text style={styles.sectionTitle}>Preferences</Text>
           <View style={styles.settingItem}>
             <Text style={styles.settingLabel}>Notifications</Text>
             <Switch
-              trackColor={{ false: "#E5E5EA", true: "#4CAF50" }}
+              trackColor={{ false: "rgba(229, 229, 234, 0.3)", true: "#4CAF50" }}
               thumbColor="#FFFFFF"
-              ios_backgroundColor="#E5E5EA"
+              ios_backgroundColor="rgba(229, 229, 234, 0.3)"
               onValueChange={setNotifications}
               value={notifications}
             />
@@ -73,23 +72,23 @@ export default function SettingsScreen() {
           <View style={styles.settingItem}>
             <Text style={styles.settingLabel}>Dark Mode</Text>
             <Switch
-              trackColor={{ false: "#E5E5EA", true: "#4CAF50" }}
+              trackColor={{ false: "rgba(229, 229, 234, 0.3)", true: "#4CAF50" }}
               thumbColor="#FFFFFF"
-              ios_backgroundColor="#E5E5EA"
+              ios_backgroundColor="rgba(229, 229, 234, 0.3)"
               onValueChange={setDarkMode}
               value={darkMode}
             />
           </View>
-        </View>
+        </GlassCard>
 
-        <View style={styles.section}>
+        <GlassCard style={styles.section}>
           <Text style={styles.sectionTitle}>Privacy</Text>
           <View style={styles.settingItem}>
             <Text style={styles.settingLabel}>Location Services</Text>
             <Switch
-              trackColor={{ false: "#E5E5EA", true: "#4CAF50" }}
+              trackColor={{ false: "rgba(229, 229, 234, 0.3)", true: "#4CAF50" }}
               thumbColor="#FFFFFF"
-              ios_backgroundColor="#E5E5EA"
+              ios_backgroundColor="rgba(229, 229, 234, 0.3)"
               onValueChange={setLocationServices}
               value={locationServices}
             />
@@ -97,14 +96,14 @@ export default function SettingsScreen() {
           <View style={styles.settingItem}>
             <Text style={styles.settingLabel}>Data Sharing</Text>
             <Switch
-              trackColor={{ false: "#E5E5EA", true: "#4CAF50" }}
+              trackColor={{ false: "rgba(229, 229, 234, 0.3)", true: "#4CAF50" }}
               thumbColor="#FFFFFF"
-              ios_backgroundColor="#E5E5EA"
+              ios_backgroundColor="rgba(229, 229, 234, 0.3)"
               onValueChange={setDataSharing}
               value={dataSharing}
             />
           </View>
-        </View>
+        </GlassCard>
 
         <View style={styles.signOutContainer}>
           <SignOutButton />
@@ -117,13 +116,11 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: 'transparent',
   },
   header: {
     paddingHorizontal: 20,
     paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#E5E5EA",
     flexDirection: "row",
     alignItems: "center",
   },
@@ -134,46 +131,45 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 16,
-    color: "#000000",
+    color: "#E8F1F2",
     marginLeft: 2,
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#000000",
+    color: "#E8F1F2",
     flex: 1,
     textAlign: "center",
-    marginRight: 40, // To offset the back button width and keep title centered
+    marginRight: 40,
   },
   scrollView: {
     flex: 1,
   },
   section: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 10,
+    marginHorizontal: 20,
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: "#555555",
+    color: "#E8F1F2",
     marginBottom: 15,
   },
   settingItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 12,
-    borderBottomColor: "#F0F0F0",
+    borderBottomColor: "rgba(255, 255, 255, 0.1)",
     borderBottomWidth: 1,
-    alignItems: "center", // Center items vertically for switches
+    alignItems: "center",
   },
   settingLabel: {
     fontSize: 16,
-    color: "#000000",
+    color: "#E8F1F2",
   },
   settingValue: {
     fontSize: 16,
-    color: "#8E8E93",
+    color: "rgba(232, 241, 242, 0.7)",
   },
   signOutContainer: {
     marginTop: 30,

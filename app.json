@@ -15,7 +15,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "navigationBarColor": "#13293D",
+      "statusBar": {
+        "backgroundColor": "#13293D"
+      },
+      "package": "com.anonymous.overwatch"
     },
     "web": {
       "bundler": "metro",

@@ -1,15 +1,19 @@
 import { Stack } from 'expo-router/stack'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { GradientBackground } from '../components/GradientBackground'
 
 export default function Layout() {
   return (
     <SafeAreaProvider>
-      <Stack 
-        screenOptions={{ 
-          headerShown: false,
-          contentStyle: { backgroundColor: 'white' } 
-        }}
-      />
+      <GradientBackground>
+        <Stack 
+          screenOptions={{ 
+            headerShown: false,
+            animation: 'slide_from_right',
+            contentStyle: { backgroundColor: '#13293D' }
+          }}
+        />
+      </GradientBackground>
     </SafeAreaProvider>
   )
 }
